@@ -26,6 +26,9 @@ public class Computation {
     /** a HashMap storing all the currency and their corresponding rate of exchange.
      */
     private HashMap<String, Double> rate;
+    /** The HashMap storing the onverted value of all currencies based on the user input.
+     */
+    private HashMap<String, Double> result;
     /** The type of rate stored as a type object.
      */
     private Type type = new TypeToken<HashMap<String, Object>>() { }.getType();
@@ -65,6 +68,17 @@ public class Computation {
             for (String cur : rate.keySet()) {
                 bcrate.replace(cur, rate.get(cur) / val);
             }
+        }
+    }
+    /** The calculation functionality of the app, based a given number of a specific currency,
+     * this function will update the HashMap of result.
+     * @param abbrev specify the type of the entered value.
+     * @param value the number input from the user.
+     */
+    public void calc(final String abbrev, final double value) {
+        double val = rate.get(abbrev);
+        for (String cur : rate.keySet()) {
+            bcrate.replace(cur, value * rate.get(cur) / val);
         }
     }
 }
