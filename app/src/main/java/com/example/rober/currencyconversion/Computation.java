@@ -4,8 +4,12 @@ import android.util.Log;
 
 import java.util.HashMap;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import java.lang.reflect.Type;
+import java.util.Map;
+
 import org.json.JSONObject;
 import com.google.gson.Gson;
 
@@ -22,7 +26,7 @@ public class Computation {
     /** a HashMap storing all the currency and their corresponding rate of exchange according to the
      * chosen base case.
      */
-    private HashMap<String, Double> bcrate;
+    public HashMap<String, Double> bcrate;
     /** a HashMap storing all the currency and their corresponding rate of exchange.
      */
     private HashMap<String, Double> rate;
@@ -40,9 +44,11 @@ public class Computation {
         try {
             String timestamp = Integer.toString(resp.getInt("timestamp")).substring(0, 3);
             time =  timestamp.substring(0, 1) + " : " + timestamp.substring(2, 3);
-            Gson a = new Gson();
-            HashMap<String, Double> hm = a.fromJson("rates", type);
-            rate.putAll(hm);
+            Gson gson = new Gson();
+            Type type = new TypeToken<Map<String, Double>>(){}.getType();
+            ECBobj ecbObj = gson.fromJson(resp.toString(), ECBobj.class);
+            Log.d("s", ecbObj.rates.toString());
+            rate.putAll(ecbObj.rates);
             setBaseCase("EUR");
         } catch (JSONException e) {
             Log.e("APP->src", "Computation: unexpected json error", e);

@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string-array name = "numbers">
+        <item>EUR</item>
+        <item>USD</item>
+        <item>CNY</item>
+        <item>CAD</item>
+        <item>CHF</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>HKD</item>
+        <item>NZD</item>
+        <item>SEK</item>
+        <item>DKK</item>
+        <item>NOk</item>
+        <item>SGD</item>
+        <item>CZK</item>
+        <item>MXN</item>
+        <item>PLN</item>
+        <item>PLN</item>
+        <item>RUB</item>
+        <item>TRY</item>
+        <item>ZAR</item>
+    </string-array>
 </resources>

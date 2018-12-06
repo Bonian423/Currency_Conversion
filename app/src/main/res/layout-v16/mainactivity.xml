@@ -9,255 +9,103 @@
     android:weightSum="100"
     tools:context=".MainActivity">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </TableLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/Conversion Result"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="59dp"
-            android:text="CONVERSION RESULT"
-            android:textSize="30sp" />
+            android:layout_height="75dp"
+            android:orientation="horizontal">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TableRow
+            <Spinner
+                android:id="@+id/from"
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="From"
+                android:visibility="visible" />
+
+            <Spinner
+                android:id="@+id/to"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="To"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editText2"
-                    android:layout_width="181dp"
-                    android:layout_height="70dp"
+                    android:id="@+id/enter"
+                    android:layout_width="296dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:ems="10"
-                    android:hint="0.00"
-                    android:inputType="numberDecimal" />
+                    android:inputType="number"
+                    android:text="Enter" />
 
-                <EditText
-                    android:id="@+id/editText3"
-                    android:layout_width="193dp"
-                    android:layout_height="70dp"
-                    android:ems="10"
-                    android:hint="0.00"
-                    android:inputType="numberDecimal" />
+                <Button
+                    android:id="@+id/go"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Go" />
 
-            </TableRow>
+            </LinearLayout>
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="51dp">
-
-                <Spinner
-                    android:id="@+id/spinner2"
-                    android:layout_width="193dp"
-                    android:layout_height="match_parent" />
-
-                <Spinner
-                    android:id="@+id/spinner3"
-                    android:layout_width="193dp"
-                    android:layout_height="80dp" />
-
-            </TableRow>
-
-            <TableRow
+            <EditText
+                android:id="@+id/result"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Result" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+        </LinearLayout>
 
-                    <Button
-                        android:id="@+id/button7"
-                        android:layout_width="50dp"
-                        android:layout_height="69dp"
-                        android:layout_weight="1"
-                        android:text="7"
-                        android:textSize="24sp" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/display"
+            android:layout_width="match_parent"
+            android:layout_height="270dp">
 
-                    <Button
-                        android:id="@+id/button6"
-                        android:layout_width="50dp"
-                        android:layout_height="69dp"
-                        android:layout_weight="1"
-                        android:text="8"
-                        android:textSize="24sp" />
-                </LinearLayout>
+        </android.support.v7.widget.RecyclerView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/button5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="69dp"
-                        android:layout_weight="1"
-                        android:text="9"
-                        android:textSize="24sp" />
-
-                    <Button
-                        android:id="@+id/button4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="EMPTY"
-                        android:textSize="17sp" />
-                </LinearLayout>
-            </TableRow>
-
-            <TableRow
+            <Button
+                android:id="@+id/refresh"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/button14"
-                        android:layout_width="99dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="4"
-                        android:textSize="24sp" />
-
-                    <Button
-                        android:id="@+id/button16"
-                        android:layout_width="99dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="5"
-                        android:textSize="24sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="69dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/button18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="6"
-                        android:textSize="24sp" />
-
-                    <Button
-                        android:id="@+id/button15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="SWITCH"
-                        android:textSize="17sp" />
-                </LinearLayout>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="69dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/button20"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="1"
-                        android:textSize="24sp" />
-
-                    <Button
-                        android:id="@+id/button19"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="2"
-                        android:textSize="24sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/button22"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="3"
-                        android:textSize="24sp" />
-
-                    <Button
-                        android:id="@+id/button21"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="delete"
-                        android:textSize="17sp" />
-                </LinearLayout>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/button23"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textSize="24sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/button25"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="."
-                        android:textSize="24sp" />
-
-                    <Button
-                        android:id="@+id/button26"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="COPY"
-                        android:textSize="17sp" />
-                </LinearLayout>
-            </TableRow>
-        </TableLayout>
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:gravity="center"
+                android:textAlignment="center"
+                tools:text="Refresh Exchange Rate" />
+        </LinearLayout>
 
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_dialog_info" />
+
 
 </FrameLayout>
