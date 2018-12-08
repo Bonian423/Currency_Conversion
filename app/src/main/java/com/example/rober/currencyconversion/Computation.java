@@ -23,6 +23,9 @@ public class Computation {
     /** the base case currency the user chose.
      */
     private static String basecase;
+    /** the target currency the user chose.
+     */
+    private static String target;
     /** a HashMap storing all the currency and their corresponding rate of exchange according to the
      * chosen base case.
      */
@@ -62,6 +65,18 @@ public class Computation {
     public double getRate(final String abbrev) {
         return bcrate.get(abbrev);
     }
+    /** retrieve the stored target.
+     * @return the exchange rate.
+     */
+    public String getTarget() {
+        return target;
+    }
+    /** retrieve the stored target.
+     * @return the exchange rate.
+     */
+    public String getBasecase() {
+        return basecase;
+    }
     /** Setting the base case of the currency conversion rate(default euro(EUR)).
      * @param abbrev  desired base case currency abbreviation as in 3 letters.
      */
@@ -76,6 +91,13 @@ public class Computation {
             }
         }
     }
+    public void setTarget(final String abbrev) throws IllegalArgumentException {
+        if (abbrev != null && rate.keySet().contains(abbrev)) {
+            target = abbrev;
+        } else {
+            throw new IllegalArgumentException("INVALID Target");
+        }
+    }
     /** The calculation functionality of the app, based a given number of a specific currency,
      * this function will update the HashMap of result.
      * @param abbrev specify the type of the entered value.
@@ -83,6 +105,12 @@ public class Computation {
      */
     public void calc(final String abbrev, final double value) {
         double val = rate.get(abbrev);
+        for (String cur : rate.keySet()) {
+            bcrate.replace(cur, value * rate.get(cur) / val);
+        }
+    }
+    public void calc(final double value) {
+        double val = rate.get(target);
         for (String cur : rate.keySet()) {
             bcrate.replace(cur, value * rate.get(cur) / val);
         }
