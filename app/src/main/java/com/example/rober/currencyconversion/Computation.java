@@ -29,13 +29,10 @@ public class Computation {
     /** a HashMap storing all the currency and their corresponding rate of exchange according to the
      * chosen base case.
      */
-    public HashMap<String, Double> bcrate;
+    public HashMap<String, Double> bcrate = new HashMap<>();
     /** a HashMap storing all the currency and their corresponding rate of exchange.
      */
-    private HashMap<String, Double> rate;
-    /** The HashMap storing the onverted value of all currencies based on the user input.
-     */
-    private HashMap<String, Double> result;
+    private HashMap<String, Double> rate = new HashMap<>();
     /** The type of rate stored as a type object.
      */
     private Type type = new TypeToken<HashMap<String, Object>>() { }.getType();
@@ -43,18 +40,26 @@ public class Computation {
     /**initializing a instance of computation, with all data from the json object processed.
      * @param resp the json object to be processed.
      */
-    public Computation(final JSONObject resp) {
-        try {
-            String timestamp = Integer.toString(resp.getInt("timestamp")).substring(0, 3);
-            time =  timestamp.substring(0, 1) + " : " + timestamp.substring(2, 3);
-            Gson gson = new Gson();
-            Type type = new TypeToken<Map<String, Double>>(){}.getType();
-            ECBobj ecbObj = gson.fromJson(resp.toString(), ECBobj.class);
-            Log.d("s", ecbObj.rates.toString());
-            rate.putAll(ecbObj.rates);
-            setBaseCase("EUR");
-        } catch (JSONException e) {
-            Log.e("APP->src", "Computation: unexpected json error", e);
+    public Computation(final JSONObject resp) throws IllegalArgumentException{
+        if (resp != null) {
+            try {
+                String timestamp = Integer.toString(resp.getInt("timestamp")).substring(0, 3);
+                time = timestamp.substring(0, 1) + " : " + timestamp.substring(2, 3);
+                Gson gson = new Gson();
+                Type type = new TypeToken<Map<String, Double>>() {
+                }.getType();
+                ECBobj ecbObj = gson.fromJson(resp.toString(), ECBobj.class);
+                Log.d("s", ecbObj.rates.toString());
+                if(rate == null) {
+                    Log.d("e", "rate DNE");
+                }
+                rate.putAll(ecbObj.rates);
+                setBaseCase("EUR");
+            } catch (JSONException e) {
+                Log.e("APP->src", "Computation: unexpected json error", e);
+            }
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 

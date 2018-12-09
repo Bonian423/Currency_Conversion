@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
     <string-array name = "numbers">
+        <item>select</item>
         <item>EUR</item>
         <item>USD</item>
         <item>CNY</item>

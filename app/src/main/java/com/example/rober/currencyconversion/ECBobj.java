@@ -15,4 +15,11 @@ public class ECBobj {
         date = d;
         rates = r;
     }
+    public ECBobj() {
+        success = "true";
+        timestamp = 1;
+        base = "EUR";
+        date = "00000000";
+        rates = new HashMap<>();
+    }
 }
