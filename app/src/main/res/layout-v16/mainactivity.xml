@@ -92,7 +92,7 @@
                 android:id="@+id/display"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="36sp" />
+                android:textSize="24sp" />
         </ScrollView>
 
     </LinearLayout>

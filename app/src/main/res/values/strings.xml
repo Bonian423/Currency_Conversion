@@ -18,9 +18,22 @@
         <item>CZK</item>
         <item>MXN</item>
         <item>PLN</item>
-        <item>PLN</item>
+        <item>BGN</item>
         <item>RUB</item>
         <item>TRY</item>
         <item>ZAR</item>
+        <item>HUF</item>
+        <item>RON</item>
+        <item>ISK</item>
+        <item>AUD</item>
+        <item>BRL</item>
+        <item>IDR</item>
+        <item>ILS</item>
+        <item>INR</item>
+        <item>KRW</item>
+        <item>MYR</item>
+        <item>PHP</item>
+        <item>THB</item>
+        <item>HRK</item>
     </string-array>
 </resources>
