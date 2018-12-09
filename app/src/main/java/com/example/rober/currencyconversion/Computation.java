@@ -23,10 +23,10 @@ public class Computation {
     private String time;
     /** the base case currency the user chose.
      */
-    private static String basecase;
+    private static String basecase = "EUR";
     /** the target currency the user chose.
      */
-    private static String target;
+    private static String target = "EUR";
     /** a TreeMap storing all the currency and their corresponding rate of exchange according to the
      * chosen base case.
      */
@@ -49,11 +49,9 @@ public class Computation {
                 Gson gson = new Gson();
                 ECBobj ecbObj = gson.fromJson(resp.toString(), ECBobj.class);
                 Log.d("s", ecbObj.rates.toString());
-                if(rate == null) {
-                    Log.d("e", "rate DNE");
-                }
                 rate = new TreeMap<>(ecbObj.rates);
                 setBaseCase("EUR");
+                setTarget("EUR");
             } catch (JSONException e) {
                 Log.e("APP->src", "Computation: unexpected json error", e);
             }
@@ -61,45 +59,28 @@ public class Computation {
             throw new IllegalArgumentException();
         }
     }
-
-    /** retrieve the conversion rate of each currency.
-     * @param abbrev currency abbreviation as in 3 letters.
-     * @return the exchange rate.
-     */
-    public double getRate(final String abbrev) {
-        return bcrate.get(abbrev);
-    }
-    /** retrieve the stored target.
-     * @return the exchange rate.
-     */
-    public String getTarget() {
-        return target;
-    }
-    /** retrieve the stored target.
-     * @return the exchange rate.
-     */
-    public String getBasecase() {
-        return basecase;
-    }
     /** Setting the base case of the currency conversion rate(default euro(EUR)).
      * @param abbrev  desired base case currency abbreviation as in 3 letters.
      */
-    public void setBaseCase(final String abbrev) {
+    public String setBaseCase(String abbrev) {
         basecase = abbrev;
-        if (abbrev == "EUR") {
+        if (abbrev == "EUR" || abbrev == null) {
             bcrate = rate;
+            return "Please select a currency";
         } else {
             double val = rate.get(abbrev);
             for (String cur : rate.keySet()) {
                 bcrate.replace(cur, rate.get(cur) / val);
             }
+            return abbrev + "selected";
         }
     }
-    public void setTarget(final String abbrev) throws IllegalArgumentException {
+    public String setTarget(String abbrev) {
         if (abbrev != null && rate.keySet().contains(abbrev)) {
             target = abbrev;
+            return "Please select a currency";
         } else {
-            throw new IllegalArgumentException("INVALID Target");
+            return abbrev + "selected";
         }
     }
     /** The calculation functionality of the app, based a given number of a specific currency,
@@ -109,7 +90,7 @@ public class Computation {
     public void calc(final double value) {
         double val = rate.get(target);
         for (String cur : rate.keySet()) {
-            bcrate.replace(cur, value * rate.get(cur) / val);
+            bcrate.replace(cur, value / rate.get(cur) * val);
         }
     }
 }
