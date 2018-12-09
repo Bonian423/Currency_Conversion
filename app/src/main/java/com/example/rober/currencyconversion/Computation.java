@@ -2,6 +2,7 @@ package com.example.rober.currencyconversion;
 
 import android.util.Log;
 
+import java.util.HashMap;
 import java.util.TreeMap;
 import com.google.gson.reflect.TypeToken;
 
@@ -65,7 +66,7 @@ public class Computation {
     public String setBaseCase(String abbrev) {
         basecase = abbrev;
         if (abbrev == "EUR" || abbrev == null) {
-            bcrate = rate;
+            bcrate = new TreeMap<String, Double>(rate);
             return "Please select a currency";
         } else {
             double val = rate.get(abbrev);
@@ -83,6 +84,10 @@ public class Computation {
             return abbrev + "selected";
         }
     }
+    public TreeMap getRate() {
+        return rate;
+    }
+
     /** The calculation functionality of the app, based a given number of a specific currency,
      * this function will update the TreeMap of result.
      * @param value the number input from the user.
@@ -91,6 +96,8 @@ public class Computation {
         double val = rate.get(target);
         for (String cur : rate.keySet()) {
             bcrate.replace(cur, value / rate.get(cur) * val);
+            Log.d("d", value + "    " + rate.get(cur) + "  " + val + "\n");
         }
+
     }
 }
