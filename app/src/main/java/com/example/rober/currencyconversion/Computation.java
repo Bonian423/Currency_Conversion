@@ -100,15 +100,8 @@ public class Computation {
     }
     /** The calculation functionality of the app, based a given number of a specific currency,
      * this function will update the HashMap of result.
-     * @param abbrev specify the type of the entered value.
      * @param value the number input from the user.
      */
-    public void calc(final String abbrev, final double value) {
-        double val = rate.get(abbrev);
-        for (String cur : rate.keySet()) {
-            bcrate.replace(cur, value * rate.get(cur) / val);
-        }
-    }
     public void calc(final double value) {
         double val = rate.get(target);
         for (String cur : rate.keySet()) {
