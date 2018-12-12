@@ -22,7 +22,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.GsonBuilder;
 
 import org.json.JSONObject;
 
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private Computation data;
     /** the initial value of the string.
      */
-    private String[] log1 = {"Invalid call"};
     /**
      * Run when our activity comes into view.
      *
